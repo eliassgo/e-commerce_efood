@@ -14,7 +14,9 @@ export const GlobalCss = createGlobalStyle`
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
-
+body{
+  background-color: ${colors.offWhite};
+}
 
   .container{
     max-width: 1024px;

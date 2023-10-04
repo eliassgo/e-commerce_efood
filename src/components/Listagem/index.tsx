@@ -1,12 +1,15 @@
-import React from 'react'
-import { Container, List } from './styles'
+import { Container } from './styles'
+import Restaurante from '../Restaurante'
 
 const Listagem = () => (
-  <Container>
-    <div className="container">
-      <List></List>
-    </div>
-  </Container>
+  <div className="container">
+    <Container>
+      <Restaurante />
+      <Restaurante />
+      <Restaurante />
+      <Restaurante />
+    </Container>
+  </div>
 )
 
 export default Listagem
