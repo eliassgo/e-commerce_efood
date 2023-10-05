@@ -10,6 +10,11 @@ export const Card = styled.div`
   .image {
     border-right: 1px solid #e66767;
     border-left: 1px solid #e66767;
+
+    img {
+      width: 472px;
+      height: 217px;
+    }
   }
 `
 export const Text = styled.h3`
@@ -65,5 +70,6 @@ export const Tags = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin-left: 8px;
   }
 `
