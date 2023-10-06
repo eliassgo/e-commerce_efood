@@ -55,7 +55,6 @@ export const ButtonLink = styled.button`
   line-height: normal;
 `
 export const Tags = styled.div`
-  list-style: none;
   display: flex;
   position: absolute;
   top: 16px;

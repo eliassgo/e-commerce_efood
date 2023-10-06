@@ -9,6 +9,7 @@ import lasai from '../src/assets/images/lasai.webp'
 import origem from '../src/assets/images/origem.jpg'
 import oteque from '../src/assets/images/oteque.webp'
 import porco from '../src/assets/images/porco.jpg'
+import Footer from './components/Footer'
 
 const restaurantes: Restaurant[] = [
   {
@@ -72,6 +73,7 @@ function App() {
       <GlobalCss />
       <Hero />
       <Listagem restaurants={restaurantes} />
+      <Footer />
     </>
   )
 }
