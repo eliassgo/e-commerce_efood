@@ -14,7 +14,15 @@ export const Card = styled.div`
     img {
       width: 472px;
       height: 217px;
+
+      @media (max-width: 992px) {
+        width: 100%;
+      }
     }
+  }
+
+  @media (max-width: 992px) {
+    width: 90%;
   }
 `
 export const Text = styled.h3`
