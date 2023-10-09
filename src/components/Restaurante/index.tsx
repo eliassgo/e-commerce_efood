@@ -35,7 +35,7 @@ const Restaurante = ({ category, image, title, score, description }: Props) => (
         </DivTitle>
       </DivTitle>
       <Description>{description}</Description>
-      <ButtonLink>Saiba Mais</ButtonLink>
+      <ButtonLink to={'/profile'}>Saiba Mais</ButtonLink>
     </DivCard>
   </Card>
 )

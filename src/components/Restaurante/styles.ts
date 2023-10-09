@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../styles'
+import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
   background: ${colors.white};
@@ -50,7 +51,7 @@ export const DivTitle = styled.div`
   justify-content: space-between;
   align-itemns: center;
 `
-export const ButtonLink = styled.button`
+export const ButtonLink = styled(Link)`
   background: ${colors.coral};
   color: ${colors.peach};
   padding: 4px;
