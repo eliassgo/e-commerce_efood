@@ -3,7 +3,7 @@ import { colors } from '../../styles'
 
 export const HeroContainer = styled.div`
   height: 384px;
-  background-repeate: no-repeat;
+  background-repeat: no-repeat;
   background-size: cover;
 `
 export const HeroContente = styled.div`

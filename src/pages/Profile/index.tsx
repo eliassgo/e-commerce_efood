@@ -1,8 +1,10 @@
+import Banner from '../../components/Banner'
+import Carrinho from '../../components/CarrinhoHeader'
+
 const Profile = () => (
   <>
-    <div>Header</div>
-    <div>Banner</div>
-    <div>Cardápio</div>
+    <Carrinho />
+    <Banner />
   </>
 )
 

@@ -1,6 +1,7 @@
 import { Container } from './styles'
 import Restaurante from '../Restaurante'
 import Restaurant from '../../models/Restaurant'
+import Produto from '../Produto'
 
 export type Props = {
   restaurants: Restaurant[]
@@ -19,6 +20,7 @@ const Listagem = ({ restaurants }: Props) => (
           description={restaurant.description}
         />
       ))}
+      <Produto />
     </Container>
   </div>
 )
