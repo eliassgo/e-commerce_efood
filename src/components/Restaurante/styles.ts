@@ -62,6 +62,7 @@ export const ButtonLink = styled(Link)`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  text-decoration: none;
 `
 export const Tags = styled.div`
   display: flex;
