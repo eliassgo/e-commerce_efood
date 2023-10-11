@@ -15,8 +15,16 @@ type Props = {
   title: string
   score: string
   description: string
+  to?: string
 }
-const Restaurante = ({ category, image, title, score, description }: Props) => (
+const Restaurante = ({
+  category,
+  image,
+  title,
+  score,
+  description,
+  to
+}: Props) => (
   <Card>
     <Tags>
       {category.map((category) => (
@@ -35,7 +43,7 @@ const Restaurante = ({ category, image, title, score, description }: Props) => (
         </DivTitle>
       </DivTitle>
       <Description>{description}</Description>
-      <ButtonLink to={'/profile'}>Saiba Mais</ButtonLink>
+      <ButtonLink to={to as string}>Saiba Mais</ButtonLink>
     </DivCard>
   </Card>
 )

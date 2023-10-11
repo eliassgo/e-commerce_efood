@@ -5,14 +5,15 @@ class Restaurant {
   score: string
   description: string
   id: number
-
+  to: string
   constructor(
     id: number,
     category: string[],
     description: string,
     image: string,
     title: string,
-    score: string
+    score: string,
+    to: string
   ) {
     this.id = id
     this.category = category
@@ -20,6 +21,7 @@ class Restaurant {
     this.image = image
     this.title = title
     this.score = score
+    this.to = to
   }
 }
 
