@@ -36,4 +36,46 @@ export const Button = styled.button`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  cursor: pointer;
+`
+export const DescriptionCard = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Cor de fundo com opacidade */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Z-index alto para que fique acima de outros elementos */
+`
+export const CardMenu = styled.div`
+  position: relative;
+  padding: 32px;
+  background-color: ${colors.coral};
+  color: ${colors.peach};
+  display: flex;
+
+  button {
+    padding: 4px;
+  }
+`
+
+export const Imagem = styled.div`
+  margin-right: 24px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 280px;
+  height: 280px;
+`
+export const Close = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
 `
