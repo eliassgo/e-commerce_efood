@@ -8,7 +8,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 186px;
-  padding: 80px 172px;
   color: ${colors.coral};
   font-size: 18px;
 

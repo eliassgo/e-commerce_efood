@@ -4,7 +4,7 @@ import bannerImg from '../../assets/images/banner.jpg'
 
 const Carrinho = () => (
   <div style={{ backgroundImage: `url(${bannerImg})` }}>
-    <Container>
+    <Container className="container">
       <Title>Restaurantes</Title>
       <img src={logo} alt="logo 'efood" />
       <div>
