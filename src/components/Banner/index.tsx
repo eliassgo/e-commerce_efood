@@ -7,7 +7,7 @@ export type Props = {
 }
 const Banner = ({ image, type, restaurant }: Props) => (
   <Container style={{ backgroundImage: `url(${image})` }}>
-    <Contente className="container">
+    <Contente>
       <h3>{type}</h3>
       <h1>{restaurant}</h1>
     </Contente>

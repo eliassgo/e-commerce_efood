@@ -7,6 +7,9 @@ export const Container = styled.div`
   height: 280px;
 `
 export const Contente = styled.div`
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
   color: ${colors.white};
   padding: 24px 0;
   display: flex;
