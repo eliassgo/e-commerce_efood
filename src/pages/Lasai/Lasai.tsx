@@ -1,57 +1,60 @@
 import ProdutoList from '../../components/Produtos'
 import ProdutoModel from '../../models/Produto'
 import lasai from '../../assets/images/lasai.webp'
+import lasaiBanner from '../../assets/images/lasai-galeria.jpg'
 import Carrinho from '../../components/CarrinhoHeader'
 import Banner from '../../components/Banner'
+import ScrollToTop from '../../components/ScrollToTop'
 
 const produtos: ProdutoModel[] = [
   {
     id: 1,
-    title: 'Pizza Marguerita',
+    title: 'Lasai',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Oferecemos apenas um menu degustação aonde você vai provar uma grande diversidade de produtos de nossas hortas, de feiras orgânicas, do mar e da terra.',
     image: lasai
   },
   {
     id: 2,
-    title: 'Pizza Marguerita',
+    title: 'Lasai',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Oferecemos apenas um menu degustação aonde você vai provar uma grande diversidade de produtos de nossas hortas, de feiras orgânicas, do mar e da terra.',
     image: lasai
   },
   {
     id: 3,
-    title: 'Pizza Marguerita',
+    title: 'Lasai',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Oferecemos apenas um menu degustação aonde você vai provar uma grande diversidade de produtos de nossas hortas, de feiras orgânicas, do mar e da terra.',
     image: lasai
   },
   {
     id: 4,
-    title: 'Pizza Marguerita',
+    title: 'Lasai',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Oferecemos apenas um menu degustação aonde você vai provar uma grande diversidade de produtos de nossas hortas, de feiras orgânicas, do mar e da terra.',
     image: lasai
   },
   {
     id: 5,
-    title: 'Pizza Marguerita',
+    title: 'Lasai',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Oferecemos apenas um menu degustação aonde você vai provar uma grande diversidade de produtos de nossas hortas, de feiras orgânicas, do mar e da terra.',
     image: lasai
   },
   {
     id: 6,
-    title: 'Pizza Marguerita',
+    title: 'Lasai',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Oferecemos apenas um menu degustação aonde você vai provar uma grande diversidade de produtos de nossas hortas, de feiras orgânicas, do mar e da terra.',
     image: lasai
   }
 ]
 const Lasai = () => (
   <>
     <Carrinho />
-    <Banner type="Brasileira" restaurant="Lasai" image={lasai} />
+    <ScrollToTop />
+    <Banner type="Brasileira" restaurant="Lasai" image={lasaiBanner} />
     <ProdutoList produto={produtos} />
   </>
 )

@@ -4,6 +4,7 @@ import marguerita from '../../assets/images/pizza.jpg'
 import massa from '../../assets/images/massa.jpg'
 import Carrinho from '../../components/CarrinhoHeader'
 import Banner from '../../components/Banner'
+import ScrollToTop from '../../components/ScrollToTop'
 
 const produtos: ProdutoModel[] = [
   {
@@ -52,6 +53,7 @@ const produtos: ProdutoModel[] = [
 const Profile = () => (
   <>
     <Carrinho />
+    <ScrollToTop />
     <Banner
       type="Italiana"
       restaurant="La Dolce Vita Trattoria"

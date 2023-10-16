@@ -3,48 +3,49 @@ import ProdutoModel from '../../models/Produto'
 import porco from '../../assets/images/porco.jpg'
 import Carrinho from '../../components/CarrinhoHeader'
 import Banner from '../../components/Banner'
+import ScrollToTop from '../../components/ScrollToTop'
 
 const produtos: ProdutoModel[] = [
   {
     id: 1,
-    title: 'Pizza Marguerita',
+    title: 'Porco San Zé',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Carro-chefe da casa. Porco assado lentamente por 6 a 9 horas, servido com acompanhamentos tipicamente brasileiros.',
     image: porco
   },
   {
     id: 2,
-    title: 'Pizza Marguerita',
+    title: 'Porco San Zé',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Carro-chefe da casa. Porco assado lentamente por 6 a 9 horas, servido com acompanhamentos tipicamente brasileiros.',
     image: porco
   },
   {
     id: 3,
-    title: 'Pizza Marguerita',
+    title: 'Porco San Zé',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Carro-chefe da casa. Porco assado lentamente por 6 a 9 horas, servido com acompanhamentos tipicamente brasileiros.',
     image: porco
   },
   {
     id: 4,
-    title: 'Pizza Marguerita',
+    title: 'Porco San Zé',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Carro-chefe da casa. Porco assado lentamente por 6 a 9 horas, servido com acompanhamentos tipicamente brasileiros.',
     image: porco
   },
   {
     id: 5,
-    title: 'Pizza Marguerita',
+    title: 'Porco San Zé',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Carro-chefe da casa. Porco assado lentamente por 6 a 9 horas, servido com acompanhamentos tipicamente brasileiros.',
     image: porco
   },
   {
     id: 6,
-    title: 'Pizza Marguerita',
+    title: 'Porco San Zé',
     description:
-      ' A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+      ' Carro-chefe da casa. Porco assado lentamente por 6 a 9 horas, servido com acompanhamentos tipicamente brasileiros.',
     image: porco
   }
 ]
@@ -52,6 +53,7 @@ const produtos: ProdutoModel[] = [
 const CasaPorco = () => (
   <>
     <Carrinho />
+    <ScrollToTop />
     <Banner type="Brasileira" restaurant="A casa do porco" image={porco} />
     <ProdutoList produto={produtos} />
   </>
