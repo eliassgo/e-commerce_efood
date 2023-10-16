@@ -8,6 +8,8 @@ export const Container = styled.div`
   margin-bottom: 88px;
 
   @media (max-width: 992px) {
+    width: 90%;
+    margin: 0 auto;
     justify-items: center;
     column-gap: 0;
     grid-template-columns: 1fr;

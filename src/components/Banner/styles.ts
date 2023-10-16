@@ -14,6 +14,11 @@ export const Contente = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
+  @media (max-width: 992px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   h3 {
     font-size: 32px;
     font-style: normal;
