@@ -11,6 +11,7 @@ export const Card = styled.div`
   .image {
     border-right: 1px solid #e66767;
     border-left: 1px solid #e66767;
+    border-top: 1px solid #e66767;
 
     img {
       width: 472px;
@@ -64,7 +65,7 @@ export const ButtonLink = styled(Link)`
   line-height: normal;
   text-decoration: none;
 `
-export const Tags = styled.div`
+export const Tags = styled.ul`
   display: flex;
   position: absolute;
   top: 16px;

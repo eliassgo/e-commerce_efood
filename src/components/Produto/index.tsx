@@ -16,63 +16,53 @@ type Props = {
   image: string
   title: string
   description: string
-}
-
-interface Product {
-  id: number
-  name: string
-  description: string
   price: number
+  id: number
+  porcao: string
 }
 
-const Produto = ({ image, title, description }: Props) => {
-  const initialProduct: Product = {
-    id: 1,
-    name: 'Exemplo de Produto',
-    description: 'Descrição do exemplo de produto.',
-    price: 19.99
+const Produto = ({ image, title, description, price, id, porcao }: Props) => {
+  const [modal, setModal] = useState({
+    isVisible: false
+  })
+
+  const closeModal = () => {
+    setModal({ isVisible: false })
   }
-
-  const [showProductDetails, setShowProductDetails] = useState(false)
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-
-  const handleAddToCart = (product: Product) => {
-    setSelectedProduct(product)
-    setShowProductDetails(true)
-  }
-
-  const handleCloseDetails = () => {
-    setShowProductDetails(false)
-  }
-
   return (
-    <Card>
+    <Card key={id}>
       <div>
         <img src={image} alt={title} />
       </div>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <Button onClick={() => handleAddToCart(initialProduct)}>
+      <Button
+        onClick={() =>
+          setModal({
+            isVisible: false
+          })
+        }
+      >
         Adicionar ao carrinho
       </Button>
 
-      {showProductDetails && selectedProduct && (
-        <DescriptionCard className="overlay">
-          <CardMenu className="container">
-            <Close
-              style={{ backgroundImage: `url(${close})` }}
-              onClick={handleCloseDetails}
-            ></Close>
-            <Imagem style={{ backgroundImage: `url(${image})` }}></Imagem>
+      <DescriptionCard className={modal.isVisible ? 'visivel' : ''}>
+        <CardMenu className="container">
+          <Close style={{ backgroundImage: `url(${close})` }}></Close>
+          <Imagem style={{ backgroundImage: `url(${image})` }}></Imagem>
 
-            <div>
-              <Title>{title}</Title>
-              <Description>{description}</Description>
-              <Button>Adicionar ao carrinho - R$60,90</Button>
-            </div>
-          </CardMenu>
-        </DescriptionCard>
-      )}
+          <div>
+            <Title>{title}</Title>
+            <Description>
+              {description}
+              <br />
+              {porcao}
+            </Description>
+            <Button>Adicionar ao carrinho - {price}</Button>
+          </div>
+        </CardMenu>
+        <div onClick={() => closeModal()} className="overlay"></div>
+      </DescriptionCard>
     </Card>
   )
 }

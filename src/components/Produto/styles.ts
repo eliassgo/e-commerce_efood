@@ -38,29 +38,6 @@ export const Button = styled.button`
   line-height: normal;
   cursor: pointer;
 `
-export const DescriptionCard = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Cor de fundo com opacidade */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Z-index alto para que fique acima de outros elementos */
-`
-export const CardMenu = styled.div`
-  position: relative;
-  padding: 32px;
-  background-color: ${colors.coral};
-  color: ${colors.peach};
-  display: flex;
-
-  button {
-    padding: 4px;
-  }
-`
 
 export const Imagem = styled.div`
   margin-right: 24px;
@@ -78,4 +55,41 @@ export const Close = styled.button`
   right: 8px;
   width: 16px;
   height: 16px;
+`
+
+export const DescriptionCard = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  &.visivel {
+    display: flex;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.73);
+  }
+`
+
+export const CardMenu = styled.div`
+  position: relative;
+  padding: 32px;
+  background-color: ${colors.coral};
+  color: ${colors.peach};
+  display: flex;
+  z-index: 1;
+  button {
+    padding: 4px;
+  }
 `
