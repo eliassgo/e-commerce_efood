@@ -21,7 +21,16 @@ const RestaurantePage = () => {
 
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((resp) => resp.json())
-      .then((resp) => setMenu(resp))
+      .then((resp) => {
+        if (Array.isArray(resp)) {
+          setMenu(resp)
+        } else {
+          console.error('Os dados do menu não são um array válido')
+        }
+      })
+      .catch((error) => {
+        console.error('Error na requisição à API:', error)
+      })
   }, [id])
 
   if (!restaurante) {
