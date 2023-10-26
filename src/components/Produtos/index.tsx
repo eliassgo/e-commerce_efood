@@ -13,7 +13,7 @@ const ProdutoList = ({ restaurants }: Props) => {
         {restaurants.map((r) => (
           <li key={r.id}>
             <Produto
-              id={r.id}
+              id={r.cardapio.id}
               image={r.cardapio.foto}
               title={r.cardapio.nome}
               description={r.cardapio.descricao}
