@@ -1,8 +1,8 @@
-import { Restaurant } from '../../pages/Home'
+import { RestaurantObject } from '../../pages/Home'
 import { Container, Contente } from './styles'
 
 export type Props = {
-  restaurant: Restaurant
+  restaurant: RestaurantObject
 }
 
 const Banner = ({ restaurant }: Props) => (

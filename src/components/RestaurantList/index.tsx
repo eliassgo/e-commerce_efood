@@ -1,18 +1,18 @@
 import { Container } from './styles'
-import Restaurante from '../Restaurante'
-import { Restaurant } from '../../pages/Home'
+import RestauranteItem from '../RestauranteItem'
+import { RestaurantObject } from '../../pages/Home'
 
 export type Props = {
-  restaurants: Restaurant[]
+  restaurants: RestaurantObject[]
 }
 
-const Listagem = ({ restaurants }: Props) => {
+const RestaurantList = ({ restaurants }: Props) => {
   return (
     <div className="container">
       <Container>
         {restaurants.map((restaurant) => (
           <li key={restaurant.id}>
-            <Restaurante
+            <RestauranteItem
               title={restaurant.titulo}
               destacado={restaurant.destacado}
               category={restaurant.tipo}
@@ -27,4 +27,4 @@ const Listagem = ({ restaurants }: Props) => {
     </div>
   )
 }
-export default Listagem
+export default RestaurantList

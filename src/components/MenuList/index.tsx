@@ -1,18 +1,18 @@
 import { Container } from './styles'
-import Produto from '../Produto'
-import { Restaurant } from '../../pages/Home'
+import MenuItem from '../MenuItem'
+import { RestaurantObject } from '../../pages/Home'
 
 export type Props = {
-  restaurants: Restaurant[]
+  menu: RestaurantObject[]
 }
 
-const ProdutoList = ({ restaurants }: Props) => {
+const MenuList = ({ menu }: Props) => {
   return (
     <div className="container">
       <Container>
-        {restaurants.map((r) => (
+        {menu.map((r) => (
           <li key={r.id}>
-            <Produto
+            <MenuItem
               id={r.cardapio.id}
               image={r.cardapio.foto}
               title={r.cardapio.nome}
@@ -26,4 +26,4 @@ const ProdutoList = ({ restaurants }: Props) => {
     </div>
   )
 }
-export default ProdutoList
+export default MenuList

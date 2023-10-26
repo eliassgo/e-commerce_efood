@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import Carrinho from '../../components/CarrinhoHeader'
+import MenuHeader from '../../components/MenuHeader'
 import ScrollToTop from '../../components/ScrollToTop'
 import Banner from '../../components/Banner'
-import ProdutoList from '../../components/Produtos'
+import MenuList from '../../components/MenuList'
 
-import { Restaurant } from '../Home'
+import { RestaurantObject } from '../Home'
 
 const RestaurantePage = () => {
   const { id } = useParams()
 
-  const [restaurante, setRestaurante] = useState<Restaurant>()
-  const [menu, setMenu] = useState<Restaurant[]>([])
+  const [restaurante, setRestaurante] = useState<RestaurantObject>()
+  const [menu, setMenu] = useState<RestaurantObject[]>([])
 
   useEffect(() => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
@@ -30,10 +30,10 @@ const RestaurantePage = () => {
 
   return (
     <>
-      <Carrinho />
+      <MenuHeader />
       <ScrollToTop />
       <Banner restaurant={restaurante} />
-      <ProdutoList restaurants={menu} />
+      <MenuList menu={menu} />
     </>
   )
 }

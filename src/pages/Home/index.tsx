@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 
-import Hero from '../../components/Hero'
-import Listagem from '../../components/Listagem'
+import Header from '../../components/Header'
+import RestaurantList from '../../components/RestaurantList'
 
-export type Restaurant = {
+export type RestaurantObject = {
   id: number
   titulo: string
   destacado: boolean
@@ -22,7 +22,7 @@ export type Restaurant = {
 }
 
 const Home = () => {
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([])
+  const [restaurants, setRestaurants] = useState<RestaurantObject[]>([])
 
   useEffect(() => {
     fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
@@ -32,8 +32,8 @@ const Home = () => {
 
   return (
     <>
-      <Hero />
-      <Listagem restaurants={restaurants} />
+      <Header />
+      <RestaurantList restaurants={restaurants} />
     </>
   )
 }

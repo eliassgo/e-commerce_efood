@@ -16,10 +16,9 @@ type Props = {
   score: number
   description: string
   to?: number
-
   destacado: boolean
 }
-const Restaurante = ({
+const RestauranteItem = ({
   category,
   image,
   title,
@@ -50,4 +49,4 @@ const Restaurante = ({
   </Card>
 )
 
-export default Restaurante
+export default RestauranteItem
