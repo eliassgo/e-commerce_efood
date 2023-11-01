@@ -8,7 +8,6 @@ import {
   Close,
   Description,
   DescriptionCard,
-  Imagem,
   Title
 } from './styles'
 
@@ -19,6 +18,13 @@ type Props = {
   price: number
   id: number
   porcao: string
+}
+
+export const FormataPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-br', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
 }
 
 const Produto = ({ image, title, description, price, id, porcao }: Props) => {
@@ -39,7 +45,7 @@ const Produto = ({ image, title, description, price, id, porcao }: Props) => {
       <Button
         onClick={() =>
           setModal({
-            isVisible: false
+            isVisible: true
           })
         }
       >
@@ -48,17 +54,21 @@ const Produto = ({ image, title, description, price, id, porcao }: Props) => {
 
       <DescriptionCard className={modal.isVisible ? 'visivel' : ''}>
         <CardMenu className="container">
-          <Close style={{ backgroundImage: `url(${close})` }}></Close>
-          <Imagem style={{ backgroundImage: `url(${image})` }}></Imagem>
+          <Close
+            onClick={() => closeModal()}
+            style={{ backgroundImage: `url(${close})` }}
+          ></Close>
+          <img src={image} alt="" />
 
           <div>
             <Title>{title}</Title>
             <Description>
               {description}
               <br />
-              {porcao}
+              <br />
+              Serve: de {porcao}
             </Description>
-            <Button>Adicionar ao carrinho - {price}</Button>
+            <button>Adicionar ao carrinho - {FormataPreco(price)}</button>
           </div>
         </CardMenu>
         <div onClick={() => closeModal()} className="overlay"></div>

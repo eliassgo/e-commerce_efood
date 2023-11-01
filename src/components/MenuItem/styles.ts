@@ -3,28 +3,33 @@ import { colors } from '../../styles'
 
 export const Card = styled.div`
   background-color: ${colors.coral};
-  color: ${colors.peach};
   padding: 8px;
   display: flex;
   flex-direction: column;
   margin: 32px 0;
+  height: 100%;
+  position: relative;
   img {
-    width: 100%;
+    width: 304px;
+    height: 167px;
+    object-fit: cover;
   }
 `
 export const Title = styled.h3`
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
-  margin: 8px 0;
+  margin-bottom: 16px;
+  color: ${colors.white};
 `
 export const Description = styled.p`
+  color: ${colors.white};
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 22px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 `
 export const Button = styled.button`
   background-color: ${colors.peach};
@@ -37,16 +42,11 @@ export const Button = styled.button`
   font-weight: 700;
   line-height: normal;
   cursor: pointer;
+  position: absolute;
+  bottom: 8px;
+  width: 95%;
 `
-
-export const Imagem = styled.div`
-  margin-right: 24px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 280px;
-  height: 280px;
-`
-export const Close = styled.button`
+export const Close = styled.div`
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -90,6 +90,21 @@ export const CardMenu = styled.div`
   display: flex;
   z-index: 1;
   button {
-    padding: 4px;
+    background-color: ${colors.peach};
+    color: ${colors.coral};
+    padding: 8px;
+    display: flex;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: none;
+  }
+
+  img {
+    width: 280px;
+    height: 280px;
+    margin-right: 24px;
   }
 `

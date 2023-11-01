@@ -1,24 +1,24 @@
 import { Container } from './styles'
 import MenuItem from '../MenuItem'
-import { RestaurantObject } from '../../pages/Home'
+import { MenuInterface } from '../../pages/Home'
 
 export type Props = {
-  menu: RestaurantObject[]
+  menu: MenuInterface[]
 }
 
 const MenuList = ({ menu }: Props) => {
   return (
     <div className="container">
       <Container>
-        {menu.map((r) => (
-          <li key={r.id}>
+        {menu.map((produto) => (
+          <li key={produto.id}>
             <MenuItem
-              id={r.cardapio.id}
-              image={r.cardapio.foto}
-              title={r.cardapio.nome}
-              description={r.cardapio.descricao}
-              price={r.cardapio.preco}
-              porcao={r.cardapio.porcao}
+              id={produto.id}
+              image={produto.foto}
+              title={produto.nome}
+              description={produto.descricao}
+              price={produto.preco}
+              porcao={produto.porcao}
             />
           </li>
         ))}
