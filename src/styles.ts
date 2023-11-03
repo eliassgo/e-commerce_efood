@@ -7,6 +7,11 @@ export const colors = {
   peach: '#FFEBD9'
 }
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
+}
+
 export const GlobalCss = createGlobalStyle`
 *{
   margin: 0;

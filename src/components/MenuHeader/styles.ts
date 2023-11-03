@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { colors } from '../../styles'
 
 export const Container = styled.div`
-  background-repeate: no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -17,7 +16,7 @@ export const Container = styled.div`
   }
 
   @media (max-width: 480px) {
-    padding: 0;
+    align-items: center;
     width: 80%;
     font-size: 12px;
   }
@@ -40,7 +39,9 @@ export const Title = styled.h3`
   font-weight: 900;
   line-height: normal;
 `
-export const Compra = styled.span`
+export const Compra = styled.a`
+  color: inherit;
+  text-decoration: none;
   text-align: center;
   font-style: normal;
   font-weight: 900;

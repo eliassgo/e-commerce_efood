@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { open, add } from '../../store/reducers/cart'
+
 import close from '../../assets/images/close.png'
 
 import {
@@ -35,6 +38,13 @@ const Produto = ({ image, title, description, price, id, porcao }: Props) => {
   const closeModal = () => {
     setModal({ isVisible: false })
   }
+
+  const dispatch = useDispatch()
+
+  // const addToCard = () => {
+  //   dispatch(add(image))
+  //   dispatch(open())
+  // }
   return (
     <Card key={id}>
       <div>
@@ -68,7 +78,10 @@ const Produto = ({ image, title, description, price, id, porcao }: Props) => {
               <br />
               Serve: de {porcao}
             </Description>
-            <button>Adicionar ao carrinho - {FormataPreco(price)}</button>
+            <button type="button">
+              {/* onClick={addToCard} */}
+              Adicionar ao carrinho - {FormataPreco(price)}
+            </button>
           </div>
         </CardMenu>
         <div onClick={() => closeModal()} className="overlay"></div>

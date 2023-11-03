@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const HeroContainer = styled.div`
   height: 384px;
@@ -16,6 +16,10 @@ export const HeroContente = styled.div`
   padding-bottom: 40px;
   position: relative;
 
+  @media (max-width: ${breakpoints.tablet}) {
+    padding-bottom: 120px;
+    width: 90%;
+  }
   img {
     position: absolute;
     top: 40px;
@@ -29,4 +33,8 @@ export const Title = styled.h1`
   font-style: normal;
   font-weight: 900;
   line-height: normal;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 24px;
+  }
 `

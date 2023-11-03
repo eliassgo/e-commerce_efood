@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../styles'
 
 export const Container = styled.ul`
   display: grid;
@@ -7,10 +8,11 @@ export const Container = styled.ul`
   margin-top: 80px;
   li {
     height: 100%;
+    display: flex;
+    justify-content: center;
   }
-  @media (max-width: 992px) {
-    justify-items: center;
-    column-gap: 0;
+
+  @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: 1fr;
   }
 `

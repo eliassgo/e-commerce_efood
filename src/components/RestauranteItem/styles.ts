@@ -3,16 +3,13 @@ import { colors } from '../../styles'
 import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
+  border: 1px solid #e66767;
   background: ${colors.white};
   position: relative;
   margin-bottom: 48px;
   color: ${colors.coral};
 
   .image {
-    border-right: 1px solid #e66767;
-    border-left: 1px solid #e66767;
-    border-top: 1px solid #e66767;
-
     img {
       width: 472px;
       height: 217px;
@@ -41,16 +38,13 @@ export const Description = styled.p`
   margin: 16px 0;
 `
 export const DivCard = styled.div`
-  border-right: 1px solid #e66767;
-  border-bottom: 1px solid #e66767;
-  border-left: 1px solid #e66767;
   padding: 8px;
   margin-top: 0;
 `
 export const DivTitle = styled.div`
   display: flex;
   justify-content: space-between;
-  align-itemns: center;
+  align-items: center;
 `
 export const ButtonLink = styled(Link)`
   background: ${colors.coral};

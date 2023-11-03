@@ -1,19 +1,37 @@
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+import { open } from '../../store/reducers/cart'
+
 import { Compra, Container, Title } from './styles'
 import logo from '../../assets/images/logo.jpg'
 import bannerImg from '../../assets/images/banner.jpg'
-import { Link } from 'react-router-dom'
 
-const Carrinho = () => (
-  <div style={{ backgroundImage: `url(${bannerImg})` }}>
-    <Container className="container">
-      <Title>Restaurantes</Title>
-      <Link to="/">
-        <img src={logo} alt="logo 'efood" />
-      </Link>
-      <div>
-        <Compra>0 produto(s) no carrinho</Compra>
-      </div>
-    </Container>
-  </div>
-)
+const Carrinho = () => {
+  const dispatch = useDispatch()
+
+  const { items } = useSelector((state: RootReducer) => state.cart)
+
+  const openCart = () => {
+    dispatch(open())
+  }
+
+  return (
+    <div style={{ backgroundImage: `url(${bannerImg})` }}>
+      <Container className="container">
+        <Title>Restaurantes</Title>
+        <Link to="/">
+          <img src={logo} alt="logo 'efood" />
+        </Link>
+        <div>
+          <Compra onClick={openCart} href="#">
+            {' '}
+            {items.length} produto(s) no carrinho
+          </Compra>
+        </div>
+      </Container>
+    </div>
+  )
+}
+
 export default Carrinho
