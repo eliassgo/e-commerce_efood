@@ -3,10 +3,9 @@ import { useParams } from 'react-router-dom'
 import MenuHeader from '../../components/MenuHeader'
 import ScrollToTop from '../../components/ScrollToTop'
 import Banner from '../../components/Banner'
-import MenuList from '../../components/MenuList'
 
 import { useGetRestauranteCardapioQuery } from '../../services/api'
-import Cardapio from '../../components/Cardapio'
+import Cardapio from '../../components/Menu'
 
 const RestaurantePage = () => {
   const { id } = useParams()
@@ -22,7 +21,6 @@ const RestaurantePage = () => {
       <ScrollToTop />
       <Banner restaurant={restaurante} />
       <Cardapio menu={restaurante.cardapio} />
-      {/* <MenuList menu={restaurante.cardapio} /> */}
     </>
   )
 }

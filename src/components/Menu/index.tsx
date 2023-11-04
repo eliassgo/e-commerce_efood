@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+
 import {
   Button,
   CardMenu,
@@ -9,10 +11,10 @@ import {
   Title,
   Card
 } from './styles'
+
 import { MenuInterface } from '../../pages/Home'
-import close from '../../assets/images/close.png'
-import { useDispatch } from 'react-redux'
 import { add, open } from '../../store/reducers/cart'
+import close from '../../assets/images/close.png'
 
 export type Props = {
   menu: MenuInterface[]
@@ -25,7 +27,7 @@ export const FormataPreco = (preco = 0) => {
   }).format(preco)
 }
 
-const Cardapio = ({ menu }: Props) => {
+const Menu = ({ menu }: Props) => {
   const [modal, setModal] = useState({
     isVisible: false,
     selectedProduct: null as MenuInterface | null
@@ -43,6 +45,7 @@ const Cardapio = ({ menu }: Props) => {
   const closeModal = () => {
     setModal({ isVisible: false, selectedProduct: null })
   }
+
   const addToCart = (produto: MenuInterface) => {
     dispatch(add(produto))
     dispatch(open())
@@ -97,4 +100,4 @@ const Cardapio = ({ menu }: Props) => {
   )
 }
 
-export default Cardapio
+export default Menu

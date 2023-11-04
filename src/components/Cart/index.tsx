@@ -4,7 +4,7 @@ import { RootReducer } from '../../store'
 import { CartContainer, CartItem, Overlay, Prices, Sidebar } from './styles'
 
 import { close, remove } from '../../store/reducers/cart'
-import { FormataPreco } from '../Cardapio/index'
+import { FormataPreco } from '../Menu/index'
 
 const Cart = () => {
   const dispatch = useDispatch()
