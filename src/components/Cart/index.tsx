@@ -1,15 +1,33 @@
 import { useDispatch, useSelector } from 'react-redux'
+
 import { RootReducer } from '../../store'
+import { close, remove, closeSideBarCart } from '../../store/reducers/cart'
 
-import { CartContainer, CartItem, Overlay, Prices, Sidebar } from './styles'
-
-import { close, remove } from '../../store/reducers/cart'
 import { FormataPreco } from '../Menu/index'
 
-const Cart = () => {
+import {
+  CartContainer,
+  CartItem,
+  Overlay,
+  Prices,
+  SideBarButton,
+  Sidebar
+} from './styles'
+
+export type Props = {
+  title: string
+}
+
+const Cart = ({ title }: Props) => {
+  const { isOpen, items, openSide } = useSelector(
+    (state: RootReducer) => state.cart
+  )
+
   const dispatch = useDispatch()
 
-  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+  const handleButtonClick = () => {
+    dispatch(closeSideBarCart())
+  }
 
   const closeCart = () => {
     dispatch(close())
@@ -24,28 +42,50 @@ const Cart = () => {
       return (acc += valorAtual.preco)
     }, 0)
   }
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
-      <Sidebar>
-        <ul>
-          {items.map((produto) => (
-            <CartItem key={produto.id}>
-              <img src={produto.foto} alt="" />
-              <div>
-                <h3>{produto.nome}</h3>
-                <span>{FormataPreco(produto.preco)}</span>
-              </div>
-              <button type="button" onClick={() => removeItem(produto.id)} />
-            </CartItem>
-          ))}
-        </ul>
-        <Prices>
-          <h3>Valor total</h3>
-          <span>{FormataPreco(getTotalPrice())}</span>
-        </Prices>
-        <button type="button">Continuar com a entrega</button>
-      </Sidebar>
+      {items.length > 0 ? (
+        <>
+          <Sidebar className={openSide ? 'isVisible' : ''}>
+            <h2>{title}</h2>
+            <ul>
+              {items.map((produto) => (
+                <CartItem key={produto.id}>
+                  <img src={produto.foto} alt="" />
+                  <div>
+                    <h3>{produto.nome}</h3>
+                    <span>{FormataPreco(produto.preco)}</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => removeItem(produto.id)}
+                  />
+                </CartItem>
+              ))}
+            </ul>
+            <Prices>
+              <h3>Valor total</h3>
+              <span>{FormataPreco(getTotalPrice())}</span>
+            </Prices>
+            <SideBarButton
+              onClick={() => handleButtonClick()}
+              type="button"
+              title="Clique aqui para continuar com a compra"
+            >
+              Continuar com a entrega
+            </SideBarButton>
+          </Sidebar>
+        </>
+      ) : (
+        <Sidebar>
+          <p>
+            O carinho está vazio. Adicione pelo menos um produto para continuar
+            com a compra
+          </p>
+        </Sidebar>
+      )}
     </CartContainer>
   )
 }

@@ -16,7 +16,7 @@ function App() {
         <GlobalCss />
         <Rotas />
         <Footer />
-        <Cart />
+        <Cart title="" />
       </BrowserRouter>
     </Provider>
   )

@@ -31,15 +31,30 @@ export const Sidebar = styled.aside`
   padding: 40px 16px 0 16px;
   max-width: 360px;
   width: 100%;
+  display: none;
 
-  button {
-    width: 100%;
-    text-align: center;
-    padding: 4px 0;
-    border: none;
-    background-color: ${colors.peach};
-    color: ${colors.coral};
-    font-size: 14px;
+  &.isVisible {
+    display: block;
+  }
+`
+export const SideBarButton = styled.button`
+  width: 100%;
+  text-align: center;
+  padding: 4px 0;
+  border: none;
+  background-color: ${colors.peach};
+  color: ${colors.coral};
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+  margin-top: 8px;
+
+  h2 {
+    color: ${colors.white};
+    font-family: Roboto;
+    font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -55,7 +70,7 @@ export const Prices = styled.div`
   font-weight: 700;
   line-height: normal;
   margin-top: 40px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 `
 export const CartItem = styled.li`
   background-color: ${colors.peach};
@@ -99,5 +114,6 @@ export const CartItem = styled.li`
     position: absolute;
     top: 76px;
     right: 8px;
+    cursor: pointer;
   }
 `

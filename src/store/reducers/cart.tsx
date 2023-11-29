@@ -4,11 +4,15 @@ import { MenuInterface } from '../../pages/Home'
 type CartState = {
   items: MenuInterface[]
   isOpen: boolean
+  openSide: boolean
+  openDelivery: boolean
 }
 
 const initialState: CartState = {
   items: [],
-  isOpen: false
+  isOpen: false,
+  openSide: false,
+  openDelivery: false
 }
 
 const cartSlice = createSlice({
@@ -27,13 +31,33 @@ const cartSlice = createSlice({
       state.items = state.items.filter((item) => item.id !== action.payload)
     },
     open: (state) => {
-      state.isOpen = true
+      return {
+        ...state,
+        isOpen: true,
+        openSide: true
+      }
     },
     close: (state) => {
       state.isOpen = false
+      state.openSide = false
+    },
+    closeSideBarCart: (state) => {
+      state.openSide = false
+      state.openDelivery = true
+    },
+    closeSideBarDelivery: (state) => {
+      state.openSide = true
+      state.openDelivery = false
     }
   }
 })
 
-export const { add, close, open, remove } = cartSlice.actions
+export const {
+  add,
+  close,
+  open,
+  remove,
+  closeSideBarCart,
+  closeSideBarDelivery
+} = cartSlice.actions
 export default cartSlice.reducer
