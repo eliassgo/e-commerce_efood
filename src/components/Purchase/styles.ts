@@ -1,24 +1,8 @@
 import { styled } from 'styled-components'
-import { colors } from '../../styles'
+import SideBar from '../SideBar'
 
-export const SidebarDePurchase = styled.aside`
-  background-color: ${colors.coral};
-  color: ${colors.peach};
-  z-index: 1;
-  padding: 40px 16px 0 16px;
-  max-width: 360px;
-  width: 100%;
-  display: none;
-
+export const SideBarPurchase = styled(SideBar)`
   &.isVisible {
     display: block;
-  }
-
-  h4 {
-    margin-bottom: 16px;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
   }
 `

@@ -1,6 +1,13 @@
 import { styled } from 'styled-components'
 import { colors } from '../../styles'
 import close from '../../assets/images/lixeira.png'
+import SideBar from '../SideBar'
+
+export const SideBarCart = styled(SideBar)`
+  &.isVisible {
+    display: block;
+  }
+`
 
 export const Overlay = styled.div`
   position: absolute;
@@ -25,18 +32,6 @@ export const CartContainer = styled.div`
     display: flex;
   }
 `
-export const Sidebar = styled.aside`
-  background-color: ${colors.coral};
-  z-index: 1;
-  padding: 40px 16px 0 16px;
-  max-width: 360px;
-  width: 100%;
-  display: none;
-
-  &.isVisible {
-    display: block;
-  }
-`
 export const MessageAlert = styled.aside`
   background-color: ${colors.coral};
   z-index: 1;
@@ -49,29 +44,6 @@ export const MessageAlert = styled.aside`
     line-height: 22px;
     color: ${colors.offWhite};
     text-align: center;
-  }
-`
-export const SideBarButton = styled.button`
-  width: 100%;
-  text-align: center;
-  padding: 4px 0;
-  border: none;
-  background-color: ${colors.peach};
-  color: ${colors.coral};
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  cursor: pointer;
-  margin-top: 8px;
-
-  h2 {
-    color: ${colors.white};
-    font-family: Roboto;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
   }
 `
 export const Prices = styled.div`
