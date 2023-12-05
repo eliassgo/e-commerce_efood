@@ -28,7 +28,7 @@ const Purchase = () => {
             <label htmlFor="cardName">Nome no cartão</label>
             <input id="cardName" type="text" name="cardName" />
             <Row>
-              <div>
+              <div className="width">
                 <label htmlFor="cardNumber">Número do cartão</label>
                 <input id="cardNumber" type="text" name="cardNumber" />
               </div>

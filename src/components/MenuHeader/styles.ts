@@ -30,6 +30,12 @@ export const Container = styled.div`
       margin: 0 20px;
     }
   }
+
+  div {
+    @media (max-width: 992px) {
+      display: flex;
+    }
+  }
 `
 export const Contente = styled.div``
 

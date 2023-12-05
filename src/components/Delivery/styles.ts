@@ -7,6 +7,21 @@ export const SideBarDelivery = styled(SideBar)`
     display: block;
   }
 `
+export const Row = styled.div`
+  grid-template-columns: 1fr 1fr;
+  display: grid;
+  width: 100%;
+  column-gap: 34px;
+
+  input {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .width {
+    width: 228px;
+  }
+`
 
 export const Forms = styled.form`
   display: flex;
@@ -30,37 +45,3 @@ export const Forms = styled.form`
     padding: 8px;
   }
 `
-export const Row = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  div {
-    display: flex;
-    flex-direction: column;
-  }
-
-  input {
-    width: 100px;
-  }
-`
-// export const SidebarDelivery = styled.aside`
-//   background-color: ${colors.coral};
-//   color: ${colors.peach};
-//   z-index: 1;
-//   padding: 40px 16px 0 16px;
-//   max-width: 360px;
-//   width: 100%;
-//   display: none;
-
-//   &.isVisible {
-//     display: block;
-//   }
-
-//   h4 {
-//     margin-bottom: 16px;
-//     font-size: 16px;
-//     font-style: normal;
-//     font-weight: 700;
-//     line-height: normal;
-//   }
-// `

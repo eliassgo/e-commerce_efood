@@ -25,7 +25,7 @@ export const Contente = styled.div`
   h3 {
     font-size: 32px;
     font-style: normal;
-    font-weight: 100;
+    font-weight: 900;
     line-height: normal;
   }
 
