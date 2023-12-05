@@ -3,17 +3,17 @@ import * as S from '../Cart/styles'
 import * as T from './styles'
 import { RootReducer } from '../../store'
 import {
-  closeSideBarCart,
-  closeSideBarDelivery
+  closeSideBarDelivery,
+  openPurchaseFuction
 } from '../../store/reducers/cart'
 
 const Delivery = () => {
   const { openDelivery } = useSelector((state: RootReducer) => state.cart)
 
   const handleButtonClick = () => {
-    dispatch(closeSideBarCart())
-    dispatch(closeSideBarDelivery())
+    dispatch(openPurchaseFuction())
   }
+
   const backHandleButtonClick = () => {
     dispatch(closeSideBarDelivery())
   }
@@ -21,7 +21,8 @@ const Delivery = () => {
   const dispatch = useDispatch()
   return (
     <>
-      <T.Sidebar className={openDelivery ? 'isVisible' : ''}>
+      <T.SidebarDelivery className={openDelivery ? 'isVisible' : ''}>
+        <h4>Entrega</h4>
         <T.Forms>
           <label htmlFor="fullName">Quem irá receber</label>
           <input id="fullName" type="text" name="fullName" />
@@ -48,7 +49,7 @@ const Delivery = () => {
         <S.SideBarButton onClick={backHandleButtonClick}>
           Voltar para o carrinho
         </S.SideBarButton>
-      </T.Sidebar>
+      </T.SidebarDelivery>
     </>
   )
 }

@@ -8,11 +8,16 @@ import { FormataPreco } from '../Menu/index'
 import {
   CartContainer,
   CartItem,
+  MessageAlert,
   Overlay,
   Prices,
   SideBarButton,
   Sidebar
 } from './styles'
+
+import Delivery from '../Delivery'
+import Purchase from '../Purchase'
+import Finish from '../Finish'
 
 export type Props = {
   title: string
@@ -30,7 +35,7 @@ const Cart = ({ title }: Props) => {
   }
 
   const closeCart = () => {
-    dispatch(close())
+    openSide ? dispatch(close()) : ''
   }
 
   const removeItem = (id: number) => {
@@ -70,7 +75,7 @@ const Cart = ({ title }: Props) => {
               <span>{FormataPreco(getTotalPrice())}</span>
             </Prices>
             <SideBarButton
-              onClick={() => handleButtonClick()}
+              onClick={handleButtonClick}
               type="button"
               title="Clique aqui para continuar com a compra"
             >
@@ -79,13 +84,16 @@ const Cart = ({ title }: Props) => {
           </Sidebar>
         </>
       ) : (
-        <Sidebar>
+        <MessageAlert>
           <p>
             O carinho está vazio. Adicione pelo menos um produto para continuar
             com a compra
           </p>
-        </Sidebar>
+        </MessageAlert>
       )}
+      <Delivery />
+      <Purchase />
+      <Finish />
     </CartContainer>
   )
 }

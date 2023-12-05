@@ -6,7 +6,6 @@ export const Forms = styled.form`
   flex-direction: column;
   margin-bottom: 8px;
 
-  color: ${colors.peach};
   input,
   label {
     margin-bottom: 8px;
@@ -37,8 +36,9 @@ export const Row = styled.div`
     width: 100px;
   }
 `
-export const Sidebar = styled.aside`
+export const SidebarDelivery = styled.aside`
   background-color: ${colors.coral};
+  color: ${colors.peach};
   z-index: 1;
   padding: 40px 16px 0 16px;
   max-width: 360px;
@@ -47,5 +47,13 @@ export const Sidebar = styled.aside`
 
   &.isVisible {
     display: block;
+  }
+
+  h4 {
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
   }
 `

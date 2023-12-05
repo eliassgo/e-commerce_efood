@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
-import { open } from '../../store/reducers/cart'
+import { open, openDeliveryHeader } from '../../store/reducers/cart'
 
 import { Compra, Container, Title } from './styles'
 import logo from '../../assets/images/logo.jpg'
@@ -10,10 +10,12 @@ import bannerImg from '../../assets/images/banner.jpg'
 const Carrinho = () => {
   const dispatch = useDispatch()
 
-  const { items } = useSelector((state: RootReducer) => state.cart)
+  const { items, openDelivery } = useSelector(
+    (state: RootReducer) => state.cart
+  )
 
   const openCart = () => {
-    dispatch(open())
+    openDelivery ? dispatch(openDeliveryHeader()) : dispatch(open())
   }
 
   return (

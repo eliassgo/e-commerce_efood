@@ -6,13 +6,17 @@ type CartState = {
   isOpen: boolean
   openSide: boolean
   openDelivery: boolean
+  openPurchase: boolean
+  openFinalizar: boolean
 }
 
 const initialState: CartState = {
   items: [],
   isOpen: false,
   openSide: false,
-  openDelivery: false
+  openDelivery: false,
+  openPurchase: false,
+  openFinalizar: false
 }
 
 const cartSlice = createSlice({
@@ -40,14 +44,36 @@ const cartSlice = createSlice({
     close: (state) => {
       state.isOpen = false
       state.openSide = false
+      state.openFinalizar = false
     },
     closeSideBarCart: (state) => {
-      state.openSide = false
-      state.openDelivery = true
+      ;(state.openDelivery = true), (state.openSide = false)
     },
     closeSideBarDelivery: (state) => {
       state.openSide = true
       state.openDelivery = false
+    },
+    openPurchaseFuction: (state) => {
+      state.openPurchase = true
+      state.openDelivery = false
+    },
+    openDeliveryHeader: (state) => {
+      return {
+        ...state,
+        isOpen: true,
+        openDelivery: true
+      }
+    },
+    closePurchaseSection: (state) => {
+      state.openDelivery = true
+      state.openPurchase = false
+    },
+    finalizar: (state) => {
+      state.openPurchase = false
+      state.openFinalizar = true
+    },
+    clear: (state) => {
+      state.items = []
     }
   }
 })
@@ -58,6 +84,11 @@ export const {
   open,
   remove,
   closeSideBarCart,
-  closeSideBarDelivery
+  closeSideBarDelivery,
+  openDeliveryHeader,
+  openPurchaseFuction,
+  closePurchaseSection,
+  finalizar,
+  clear
 } = cartSlice.actions
 export default cartSlice.reducer
