@@ -12,14 +12,14 @@ import {
 
 import { usePurchaseMutation } from '../../services/api'
 
+import InputMask from 'react-input-mask'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { useEffect } from 'react'
 
 const Delivery = () => {
-  const { openDelivery, items } = useSelector(
-    (state: RootReducer) => state.cart
-  )
-  const [purchase] = usePurchaseMutation()
+  const { openDelivery } = useSelector((state: RootReducer) => state.cart)
+  const [purchase, { isSuccess }] = usePurchaseMutation()
   const dispatch = useDispatch()
 
   const handleButtonClick = () => {
@@ -33,36 +33,38 @@ const Delivery = () => {
 
   const form = useFormik({
     initialValues: {
-      fullName: '',
-      address: '',
+      receiver: '',
+      description: '',
       city: '',
-      cityCode: '',
-      number: 0,
-      plussAdress: ''
+      zipCode: '',
+      number: '',
+      complement: ''
     },
     validationSchema: Yup.object({
-      fullName: Yup.string()
+      receiver: Yup.string()
         .min(5, 'o nome precisa ter no mínimo 5 caracteres')
         .required('O campo é obrigatório'),
-      address: Yup.string().required('O campo é obrigatório'),
-      city: Yup.string().required('O campo é obrigatório'),
-      cityCode: Yup.string().required('O campo é obrigatório'),
+      description: Yup.string()
+        .min(5, 'O endereço precisa ter no mínimo 5 caracteres')
+        .required('O campo é obrigatório'),
+      city: Yup.string()
+        .min(5, 'A cidade precisa ter no mínimo 5 caracteres')
+        .required('O campo é obrigatório'),
+      zipCode: Yup.string().required('O campo é obrigatório'),
       number: Yup.string().required('O campo é obrigatório')
     }),
     onSubmit: (values) => {
       purchase({
         delivery: {
-          name: values.fullName,
-          address: values.address,
-          city: values.city,
-          cityCode: values.cityCode,
-          number: values.number,
-          plussAdress: values.plussAdress
-        },
-        products: items.map((item) => ({
-          id: item.id,
-          price: item.preco as number
-        }))
+          receiver: values.receiver,
+          address: {
+            description: values.description,
+            city: values.city,
+            zipCode: Number(values.zipCode),
+            number: Number(values.number),
+            complement: values.complement
+          }
+        }
       })
     }
   })
@@ -75,33 +77,39 @@ const Delivery = () => {
     return hasError
   }
 
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(openPurchaseFuction())
+    }
+  }, [dispatch, isSuccess])
+
   return (
     <>
       <T.SideBarDelivery
-        title="Entrega"
+        title={'Entrega'}
         className={openDelivery ? 'isVisible' : ''}
       >
         <>
           <T.Forms onSubmit={form.handleSubmit}>
-            <label htmlFor="fullName">Quem irá receber</label>
+            <label htmlFor="receiver">Quem irá receber</label>
             <input
-              id="fullName"
+              id="receiver"
               type="text"
-              name="fullName"
-              value={form.values.fullName}
+              name="receiver"
+              value={form.values.receiver}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
-              className={checkInputHasError('fullName') ? 'error' : ''}
+              className={checkInputHasError('receiver') ? 'error' : ''}
             />
-            <label htmlFor="address">Endereço</label>
+            <label htmlFor="description">Endereço</label>
             <input
-              id="address"
+              id="description"
               type="text"
-              name="address"
-              value={form.values.address}
+              name="description"
+              value={form.values.description}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
-              className={checkInputHasError('address') ? 'error' : ''}
+              className={checkInputHasError('description') ? 'error' : ''}
             />
             <label htmlFor="city">Cidade</label>
             <input
@@ -115,36 +123,38 @@ const Delivery = () => {
             />
             <T.Row>
               <div>
-                <label htmlFor="cityCode">CEP</label>
-                <input
-                  id="cityCode"
+                <label htmlFor="zipCode">CEP</label>
+                <InputMask
+                  id="zipCode"
                   type="text"
-                  name="cityCode"
-                  value={form.values.cityCode}
+                  name="zipCode"
+                  value={form.values.zipCode}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
-                  className={checkInputHasError('cityCode') ? 'error' : ''}
+                  className={checkInputHasError('zipCode') ? 'error' : ''}
+                  mask="99999-999"
                 />
               </div>
               <div>
                 <label htmlFor="number">Número</label>
-                <input
+                <InputMask
                   id="number"
-                  type="number"
+                  type="text"
                   name="number"
                   value={form.values.number}
                   onChange={form.handleChange}
                   onBlur={form.handleBlur}
                   className={checkInputHasError('number') ? 'error' : ''}
+                  mask="999"
                 />
               </div>
             </T.Row>
-            <label htmlFor="plussAdress">Complemento (opcional)</label>
+            <label htmlFor="complement">Complemento (opcional)</label>
             <input
-              id="plussAdress"
+              id="complement"
               type="text"
-              name="plussAdress"
-              value={form.values.plussAdress}
+              name="complement"
+              value={form.values.complement}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
             />

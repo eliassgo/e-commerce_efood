@@ -16,9 +16,6 @@ export const Row = styled.div`
   input {
     width: 100%;
     margin-top: 8px;
-    &.error {
-      border: 1px solid red;
-    }
   }
 
   .width {
@@ -35,7 +32,7 @@ export const Forms = styled.form`
   label {
     margin-bottom: 8px;
     &.error {
-      border: 1px solid red;
+      border: 3px solid red;
     }
   }
 

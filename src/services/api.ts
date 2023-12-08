@@ -7,26 +7,26 @@ type Product = {
 }
 
 type PurchasePayload = {
-  products: Product[]
-  delivery: {
-    name: string
-    address: string
-    city: string
-    cityCode: string
-    number: number
-    plussAdress?: string
+  products?: Product[]
+  delivery?: {
+    receiver: string
+    address: {
+      description: string
+      city: string
+      zipCode: number
+      number: number
+      complement?: string
+    }
   }
   payment?: {
     card: {
-      owner?: {
-        name: string
-      }
-      number?: string
-      expires?: {
+      name: string
+      number: number
+      code: number
+      expires: {
         month: number
         year: number
       }
-      code?: number
     }
   }
 }
