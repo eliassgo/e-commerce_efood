@@ -17,10 +17,12 @@ const Finish = () => {
     dispatch(close())
   }
 
+  const orderId = data?.orderId ?? 'N/A'
+
   return (
     <>
       <SideBarFinish
-        title={`Pedido realizado - ${data?.orderId}`}
+        title={`Pedido realizado - ${orderId}`}
         className={openFinalizar ? 'isVisible' : ''}
       >
         <>

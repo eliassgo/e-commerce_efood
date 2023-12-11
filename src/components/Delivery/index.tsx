@@ -128,10 +128,10 @@ const Delivery = () => {
   }
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess && data) {
       dispatch(finalizar())
     }
-  }, [dispatch, isSuccess])
+  }, [dispatch, isSuccess, data])
 
   return (
     <>
