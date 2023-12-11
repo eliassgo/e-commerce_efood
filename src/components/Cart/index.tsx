@@ -16,7 +16,6 @@ import {
 } from './styles'
 
 import Delivery from '../Delivery'
-import Purchase from '../Purchase'
 import Finish from '../Finish'
 
 const Cart = () => {
@@ -88,7 +87,6 @@ const Cart = () => {
         </MessageAlert>
       )}
       <Delivery />
-      <Purchase />
       <Finish />
     </CartContainer>
   )

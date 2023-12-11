@@ -1,31 +1,46 @@
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import InputMask from 'react-input-mask'
 
 import { RootReducer } from '../../store'
 
 import * as T from './styles'
 import MenuButton from '../MenuButton'
+import { SideBarPurchase, Forms, Row } from './styles'
+
+import { MenuInterface } from '../../pages/Home'
 
 import {
+  closePurchaseSection,
   closeSideBarDelivery,
+  finalizar,
   openPurchaseFuction
 } from '../../store/reducers/cart'
 
 import { usePurchaseMutation } from '../../services/api'
 
-import InputMask from 'react-input-mask'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { useEffect } from 'react'
 
 const Delivery = () => {
-  const { openDelivery } = useSelector((state: RootReducer) => state.cart)
-  const [purchase, { isSuccess }] = usePurchaseMutation()
+  const { openDelivery, openPurchase } = useSelector(
+    (state: RootReducer) => state.cart
+  )
+  const { items } = useSelector((state: RootReducer) => state.cart)
+  const [purchase, { isSuccess, data, isLoading }] = usePurchaseMutation()
+
   const dispatch = useDispatch()
 
-  const handleButtonClick = () => {
-    form.handleSubmit()
-    dispatch(openPurchaseFuction())
+  const getTotalPrice = (items: MenuInterface[]) => {
+    return items.reduce((acc, currentItem) => {
+      if (currentItem.preco) {
+        return (acc += currentItem.preco)
+      }
+      return 0
+    }, 0)
   }
+
+  const totalPrice = getTotalPrice(items)
 
   const backHandleButtonClick = () => {
     dispatch(closeSideBarDelivery())
@@ -38,7 +53,12 @@ const Delivery = () => {
       city: '',
       zipCode: '',
       number: '',
-      complement: ''
+      complement: '',
+      cardName: '',
+      cardNumber: '',
+      cardCode: '',
+      cardMonth: '',
+      cardYear: ''
     },
     validationSchema: Yup.object({
       receiver: Yup.string()
@@ -51,7 +71,14 @@ const Delivery = () => {
         .min(5, 'A cidade precisa ter no mínimo 5 caracteres')
         .required('O campo é obrigatório'),
       zipCode: Yup.string().required('O campo é obrigatório'),
-      number: Yup.string().required('O campo é obrigatório')
+      number: Yup.string().required('O campo é obrigatório'),
+      cardName: Yup.string()
+        .min(5, 'o nome precisa ter no mínimo 5 caracteres')
+        .required('O campo é obrigatório'),
+      cardNumber: Yup.string().required('O campo é obrigatório'),
+      cardCode: Yup.string().required('O campo é obrigatório'),
+      cardMonth: Yup.string().required('O campo é obrigatório'),
+      cardYear: Yup.string().required('O campo é obrigatório')
     }),
     onSubmit: (values) => {
       purchase({
@@ -64,7 +91,22 @@ const Delivery = () => {
             number: Number(values.number),
             complement: values.complement
           }
-        }
+        },
+        payment: {
+          card: {
+            name: values.cardName,
+            number: Number(values.cardNumber),
+            code: Number(values.cardCode),
+            expires: {
+              month: Number(values.cardCode),
+              year: Number(values.cardYear)
+            }
+          }
+        },
+        products: items.map((item) => ({
+          id: item.id,
+          price: item.preco as number
+        }))
       })
     }
   })
@@ -77,9 +119,17 @@ const Delivery = () => {
     return hasError
   }
 
+  const handleButtonClick = () => {
+    dispatch(openPurchaseFuction())
+  }
+
+  const BackDeliveryForm = () => {
+    dispatch(closePurchaseSection())
+  }
+
   useEffect(() => {
     if (isSuccess) {
-      dispatch(openPurchaseFuction())
+      dispatch(finalizar())
     }
   }, [dispatch, isSuccess])
 
@@ -173,6 +223,90 @@ const Delivery = () => {
           </MenuButton>
         </>
       </T.SideBarDelivery>
+      <SideBarPurchase
+        title={`Pagamento - Valor a pagar ${totalPrice}`}
+        className={openPurchase ? 'isVisible' : ''}
+      >
+        <>
+          <Forms onSubmit={form.handleSubmit}>
+            <label htmlFor="cardName">Nome no cartão</label>
+            <input
+              id="cardName"
+              type="text"
+              name="cardName"
+              onChange={form.handleChange}
+              onBlur={form.handleBlur}
+              className={checkInputHasError('cardName') ? 'error' : ''}
+              value={form.values.cardName}
+            />
+            <Row>
+              <div className="width">
+                <label htmlFor="cardNumber">Número do cartão</label>
+                <InputMask
+                  id="cardNumber"
+                  type="text"
+                  name="cardNumber"
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                  value={form.values.cardNumber}
+                  mask="9999 9999 9999 9999"
+                />
+              </div>
+              <div>
+                <label htmlFor="cardCode">CVV</label>
+                <InputMask
+                  id="cardCode"
+                  type="text"
+                  name="cardCode"
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                  value={form.values.cardCode}
+                  mask="999"
+                />
+              </div>
+            </Row>
+            <Row>
+              <div>
+                <label htmlFor="cardMonth">Mês de vencimento</label>
+                <InputMask
+                  id="cardMonth"
+                  type="text"
+                  name="cardMonth"
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                  value={form.values.cardMonth}
+                  mask="99"
+                />
+              </div>
+              <div>
+                <label htmlFor="cardYear">Ano de vencimento</label>
+                <InputMask
+                  id="cardYear"
+                  type="text"
+                  name="cardYear"
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                  value={form.values.cardYear}
+                  mask="99"
+                />
+              </div>
+            </Row>
+          </Forms>
+          <MenuButton
+            title="Clique aqui para Finalizar Pagamento a compra"
+            onClick={form.handleSubmit}
+            disabled={isLoading}
+          >
+            Finalizar Pagamento
+          </MenuButton>
+          <MenuButton
+            title="Clique aqui para Voltar para a edição de endereço"
+            onClick={BackDeliveryForm}
+          >
+            Voltar para a edição de endereço
+          </MenuButton>
+        </>
+      </SideBarPurchase>
     </>
   )
 }

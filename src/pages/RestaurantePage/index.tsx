@@ -5,7 +5,7 @@ import ScrollToTop from '../../components/ScrollToTop'
 import Banner from '../../components/Banner'
 
 import { useGetRestauranteCardapioQuery } from '../../services/api'
-import Cardapio from '../../components/Menu'
+import Menu from '../../components/Menu'
 
 const RestaurantePage = () => {
   const { id } = useParams()
@@ -20,7 +20,7 @@ const RestaurantePage = () => {
       <MenuHeader />
       <ScrollToTop />
       <Banner restaurant={restaurante} />
-      <Cardapio menu={restaurante.cardapio} />
+      <Menu menu={restaurante.cardapio} />
     </>
   )
 }

@@ -2,6 +2,7 @@ import { styled } from 'styled-components'
 import { colors } from '../../styles'
 import SideBar from '../SideBar'
 
+// CSS SideBar delivery
 export const SideBarDelivery = styled(SideBar)`
   &.isVisible {
     display: block;
@@ -46,5 +47,12 @@ export const Forms = styled.form`
     border: none;
     color: #4b4b4b;
     padding: 8px;
+  }
+`
+
+// CSS SideBar Purchase
+export const SideBarPurchase = styled(SideBar)`
+  &.isVisible {
+    display: block;
   }
 `

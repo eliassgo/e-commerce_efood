@@ -1,22 +1,26 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../../store'
-import { SideBarFinish } from './styles'
+
 import { clear, close } from '../../store/reducers/cart'
+import { usePurchaseMutation } from '../../services/api'
+import { RootReducer } from '../../store'
+
+import { SideBarFinish } from './styles'
 import MenuButton from '../MenuButton'
 
 const Finish = () => {
   const { openFinalizar } = useSelector((state: RootReducer) => state.cart)
+  const [purchase, { data }] = usePurchaseMutation()
   const dispatch = useDispatch()
 
   const handleButtonClick = () => {
     dispatch(clear())
     dispatch(close())
   }
+
   return (
     <>
       <SideBarFinish
-        title="Pedido realizado - ORDER_ID"
+        title={`Pedido realizado - ${data?.orderId}`}
         className={openFinalizar ? 'isVisible' : ''}
       >
         <>
