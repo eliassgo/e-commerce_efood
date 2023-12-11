@@ -6,11 +6,12 @@ export type Props = {
   title: string
   onClick?: () => void
   disabled?: boolean
+  type: 'button' | 'submit'
 }
 
-const MenuButton = ({ children, title, onClick, disabled }: Props) => {
+const MenuButton = ({ children, title, onClick, disabled, type }: Props) => {
   return (
-    <Button type="button" title={title} onClick={onClick} disabled={disabled}>
+    <Button type={type} title={title} onClick={onClick} disabled={disabled}>
       {children}
     </Button>
   )

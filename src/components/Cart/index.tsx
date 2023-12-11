@@ -70,6 +70,7 @@ const Cart = () => {
                 <span>{FormataPreco(getTotalPrice())}</span>
               </Prices>
               <MenuButton
+                type="button"
                 title="Clique aqui para continuar com a compra"
                 onClick={handleButtonClick}
               >

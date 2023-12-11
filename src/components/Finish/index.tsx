@@ -13,8 +13,8 @@ const Finish = () => {
   const dispatch = useDispatch()
 
   const handleButtonClick = () => {
-    dispatch(clear())
     dispatch(close())
+    dispatch(clear())
   }
 
   const orderId = data?.orderId ?? 'N/A'
@@ -47,6 +47,7 @@ const Finish = () => {
             gastronômica. Bom apetite!
           </p>
           <MenuButton
+            type="button"
             title="Clique aqui para concluir a compra"
             onClick={handleButtonClick}
           >

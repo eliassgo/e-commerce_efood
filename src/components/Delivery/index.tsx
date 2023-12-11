@@ -210,12 +210,14 @@ const Delivery = () => {
             />
           </T.Forms>
           <MenuButton
+            type="button"
             onClick={handleButtonClick}
             title="Clique aqui para continuar com a compra"
           >
             Continuar comprando
           </MenuButton>
           <MenuButton
+            type="button"
             onClick={backHandleButtonClick}
             title="Clique aqui para continuar voltar ao carrinho"
           >
@@ -293,13 +295,15 @@ const Delivery = () => {
             </Row>
           </Forms>
           <MenuButton
+            type="submit"
             title="Clique aqui para Finalizar Pagamento a compra"
             onClick={form.handleSubmit}
             disabled={isLoading}
           >
-            Finalizar Pagamento
+            {isLoading ? 'Finalizando compra..' : 'Finalizar compra'}
           </MenuButton>
           <MenuButton
+            type="button"
             title="Clique aqui para Voltar para a edição de endereço"
             onClick={BackDeliveryForm}
           >
