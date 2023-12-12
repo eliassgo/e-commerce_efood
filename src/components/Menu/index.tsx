@@ -12,19 +12,12 @@ import {
   Card
 } from './styles'
 
-import { MenuInterface } from '../../pages/Home'
 import { add, open } from '../../store/reducers/cart'
 import close from '../../assets/images/close.png'
+import { ParseToBRL } from '../../utils'
 
 export type Props = {
   menu: MenuInterface[]
-}
-
-export const FormataPreco = (preco = 0) => {
-  return new Intl.NumberFormat('pt-br', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
 }
 
 const Menu = ({ menu }: Props) => {
@@ -89,7 +82,7 @@ const Menu = ({ menu }: Props) => {
                 onClick={() => addToCart(modal.selectedProduct!)}
               >
                 Adicionar ao carrinho -{' '}
-                {FormataPreco(modal.selectedProduct!.preco)}
+                {ParseToBRL(modal.selectedProduct!.preco)}
               </button>
             </div>
           </CardMenu>

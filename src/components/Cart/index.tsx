@@ -4,8 +4,6 @@ import { RootReducer } from '../../store'
 import { close, remove, closeSideBarCart } from '../../store/reducers/cart'
 import MenuButton from '../MenuButton'
 
-import { FormataPreco } from '../Menu/index'
-
 import {
   CartContainer,
   CartItem,
@@ -17,6 +15,7 @@ import {
 
 import Delivery from '../Delivery'
 import Finish from '../Finish'
+import { ParseToBRL } from '../../utils'
 
 const Cart = () => {
   const { isOpen, items, openSide } = useSelector(
@@ -56,7 +55,7 @@ const Cart = () => {
                     <img src={produto.foto} alt="" />
                     <div>
                       <h3>{produto.nome}</h3>
-                      <span>{FormataPreco(produto.preco)}</span>
+                      <span>{ParseToBRL(produto.preco)}</span>
                     </div>
                     <button
                       type="button"
@@ -67,7 +66,7 @@ const Cart = () => {
               </ul>
               <Prices>
                 <h3>Valor total</h3>
-                <span>{FormataPreco(getTotalPrice())}</span>
+                <span>{ParseToBRL(getTotalPrice())}</span>
               </Prices>
               <MenuButton
                 type="button"

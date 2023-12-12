@@ -8,8 +8,6 @@ import * as T from './styles'
 import MenuButton from '../MenuButton'
 import { SideBarPurchase, Forms, Row } from './styles'
 
-import { MenuInterface } from '../../pages/Home'
-
 import {
   closePurchaseSection,
   closeSideBarDelivery,
@@ -21,6 +19,7 @@ import { usePurchaseMutation } from '../../services/api'
 
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { getTotalPrice } from '../../utils'
 
 const Delivery = () => {
   const { openDelivery, openPurchase } = useSelector(
@@ -30,15 +29,6 @@ const Delivery = () => {
   const [purchase, { isSuccess, data, isLoading }] = usePurchaseMutation()
 
   const dispatch = useDispatch()
-
-  const getTotalPrice = (items: MenuInterface[]) => {
-    return items.reduce((acc, currentItem) => {
-      if (currentItem.preco) {
-        return (acc += currentItem.preco)
-      }
-      return 0
-    }, 0)
-  }
 
   const totalPrice = getTotalPrice(items)
 

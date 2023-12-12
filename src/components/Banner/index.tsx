@@ -1,4 +1,3 @@
-import { RestaurantObject } from '../../pages/Home'
 import { Container, Contente } from './styles'
 
 export type Props = {
