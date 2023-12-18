@@ -1,11 +1,17 @@
 import { Container } from './styles'
 import RestauranteItem from '../RestauranteItem'
+import Loader from '../Loader'
 
 export type Props = {
   restaurants: RestaurantObject[]
+  isLoading: boolean
 }
 
-const RestaurantList = ({ restaurants }: Props) => {
+const RestaurantList = ({ restaurants, isLoading }: Props) => {
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <div className="container">
       <Container>
