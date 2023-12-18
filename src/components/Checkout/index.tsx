@@ -6,13 +6,15 @@ import { RootReducer } from '../../store'
 
 import * as T from './styles'
 import MenuButton from '../MenuButton'
-import { SideBarPurchase, Forms, Row } from './styles'
+import { SideBarPurchase, Forms, Row, SideBarFinish } from './styles'
 
 import {
   closePurchaseSection,
   closeSideBarDelivery,
   finalizar,
-  openPurchaseFuction
+  openPurchaseFuction,
+  clear,
+  close
 } from '../../store/reducers/cart'
 
 import { usePurchaseMutation } from '../../services/api'
@@ -27,6 +29,7 @@ const Delivery = () => {
   )
   const { items } = useSelector((state: RootReducer) => state.cart)
   const [purchase, { isSuccess, data, isLoading }] = usePurchaseMutation()
+  const { openFinalizar } = useSelector((state: RootReducer) => state.cart)
 
   const dispatch = useDispatch()
 
@@ -117,11 +120,18 @@ const Delivery = () => {
     dispatch(closePurchaseSection())
   }
 
+  const FinishButtonClick = () => {
+    dispatch(close())
+    dispatch(clear())
+  }
+
+  const orderId = data?.orderId ?? 'N/A'
+
   useEffect(() => {
-    if (isSuccess && data) {
+    if (isSuccess) {
       dispatch(finalizar())
     }
-  }, [dispatch, isSuccess, data])
+  }, [dispatch, isSuccess])
 
   return (
     <>
@@ -301,6 +311,40 @@ const Delivery = () => {
           </MenuButton>
         </>
       </SideBarPurchase>
+      <SideBarFinish
+        title={`Pedido realizado - ${orderId}`}
+        className={openFinalizar ? 'isVisible' : ''}
+      >
+        <>
+          <p>
+            Estamos felizes em informar que seu pedido já está em processo de
+            preparação e, em breve, será entregue no endereço fornecido.
+          </p>
+          <br />
+          <p>
+            Gostaríamos de ressaltar que nossos entregadores não estão
+            autorizados a realizar cobranças extras.
+          </p>
+          <br />
+          <p>
+            Lembre-se da importância de higienizar as mãos após o recebimento do
+            pedido, garantindo assim sua segurança e bem-estar durante a
+            refeição.
+          </p>
+          <br />
+          <p>
+            Esperamos que desfrute de uma deliciosa e agradável experiência
+            gastronômica. Bom apetite!
+          </p>
+          <MenuButton
+            type="button"
+            title="Clique aqui para concluir a compra"
+            onClick={FinishButtonClick}
+          >
+            Concluir
+          </MenuButton>
+        </>
+      </SideBarFinish>
     </>
   )
 }

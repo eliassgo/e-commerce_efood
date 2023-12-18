@@ -13,8 +13,7 @@ import {
   SideBarCart
 } from './styles'
 
-import Delivery from '../Delivery'
-import Finish from '../Finish'
+import Checkout from '../Checkout'
 import { ParseToBRL } from '../../utils'
 
 const Cart = () => {
@@ -86,8 +85,7 @@ const Cart = () => {
           </p>
         </MessageAlert>
       )}
-      <Delivery />
-      <Finish />
+      <Checkout />
     </CartContainer>
   )
 }

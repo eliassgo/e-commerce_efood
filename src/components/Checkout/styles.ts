@@ -56,3 +56,9 @@ export const SideBarPurchase = styled(SideBar)`
     display: block;
   }
 `
+// CSS SideBar Finish
+export const SideBarFinish = styled(SideBar)`
+  &.isVisible {
+    display: block;
+  }
+`
