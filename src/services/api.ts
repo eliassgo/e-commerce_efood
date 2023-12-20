@@ -30,7 +30,7 @@ type PurchasePayload = {
   }
 }
 
-type PurchaseResponde = {
+type PurchaseResponse = {
   orderId: string
 }
 
@@ -45,7 +45,7 @@ const api = createApi({
     getRestauranteCardapio: builder.query<RestaurantObject, string>({
       query: (id) => `restaurantes/${id}`
     }),
-    purchase: builder.mutation<PurchaseResponde, PurchasePayload>({
+    purchase: builder.mutation<PurchaseResponse, PurchasePayload>({
       query: (body) => ({
         url: 'checkout',
         method: 'POST',
